@@ -12,7 +12,7 @@ func Change(source Series, period ...int) Series {
 		p = period[0]
 	}
 
-	result := make([]Value, len(source))
+	result := make(Series, len(source))
 
 	idx := len(source) - 1
 	for {

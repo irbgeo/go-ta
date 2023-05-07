@@ -3,8 +3,8 @@ package ta
 import "github.com/shopspring/decimal"
 
 // Lowest minimum value for the period number of bars ago.
-func Lowest(source []Value, period int) []Value {
-	result := make([]Value, len(source))
+func Lowest(source Series, period int) Series {
+	result := make(Series, len(source))
 
 	idx := len(source) - 1
 	for {
@@ -25,7 +25,7 @@ func Lowest(source []Value, period int) []Value {
 	return result
 }
 
-func lowest(source []Value) Value {
+func lowest(source Series) Value {
 	lValue := source[0].Value
 	for _, v := range source[1:] {
 		if lValue.Cmp(v.Value) < 0 {

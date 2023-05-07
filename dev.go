@@ -6,7 +6,7 @@ import (
 
 // Dev returns of the difference between the series and its sma.
 func Dev(source Series, period int) Series {
-	out := make([]Value, 0, len(source))
+	out := make(Series, 0, len(source))
 
 	for i, v := range source {
 		if i < period-1 {
@@ -24,7 +24,7 @@ func Dev(source Series, period int) Series {
 	return out
 }
 
-func dev(source []Value) Value {
+func dev(source Series) Value {
 	sma := sma(source)
 	sum := decimal.Zero
 
