@@ -1,4 +1,4 @@
-module github.com/irbgeo/go-ta
+module github.com/irbgeo/gota
 
 go 1.20
 
