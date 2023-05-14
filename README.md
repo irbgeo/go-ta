@@ -1,2 +1,2 @@
 # go-ta
-Technical analysist package with [decimal](github.com/shopspring/decimal).
+Technical analysis package with [decimal](github.com/shopspring/decimal).
