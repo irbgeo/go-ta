@@ -7,7 +7,7 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-var expectedChange = []Value{
+var expectedATR = []Value{
 	{
 		Time:  1,
 		Value: decimal.NewFromFloat(0),
@@ -54,8 +54,8 @@ var expectedChange = []Value{
 	},
 }
 
-func TestChange(t *testing.T) {
-	actualChange := Change(testSrcSet, testPeriod)
+func TestATR(t *testing.T) {
+	actualChange := ATR(testSrcSet, )
 
 	require.Equal(t, len(expectedChange), len(actualChange), "compare len")
 	for i := 0; i < len(actualChange); i++ {
