@@ -1,7 +1,7 @@
 package ta
 
 // MACD - Moving Average Convergence/Divergence
-func MACD(source Series, shortPeriod, longPeriod, signalPeriod int) (macd Series, signal Series, hist Series) {
+func MACD(source Series, shortPeriod, longPeriod, signalPeriod int) (macd, signal, hist Series) {
 	shortEMA := EMA(source, shortPeriod)
 	longEMA := EMA(source, longPeriod)
 	macd = shortEMA.Sub(longEMA)
