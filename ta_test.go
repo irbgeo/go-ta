@@ -51,8 +51,8 @@ var (
 			Value: decimal.NewFromFloat(77.11),
 		},
 	}
-
-	testHightSet = []Value{
+	// High => Open,Close => Low
+	testHighSet = []Value{
 		{
 			Time:  1,
 			Value: decimal.NewFromFloat(7),
