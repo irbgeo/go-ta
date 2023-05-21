@@ -91,3 +91,7 @@ func (s Series) MinConst(c decimal.Decimal) Series {
 	}
 	return out
 }
+
+func (s Series) Len() int {
+	return len(s)
+}
