@@ -3,11 +3,11 @@ package ta
 import "github.com/shopspring/decimal"
 
 // SMA - Simple Moving Average
-func SMA(source Series, period int) Series {
-	out := make(Series, 0, len(source))
+func SMA(src Series, period int) Series {
+	out := make(Series, 0, len(src))
 
 	sum := decimal.Zero
-	for i, v := range source {
+	for i, v := range src {
 		sum = sum.Add(v.Value)
 		if i < period-1 {
 			out = append(out, Value{
@@ -25,20 +25,20 @@ func SMA(source Series, period int) Series {
 				Value: sma,
 			},
 		)
-		sum = sum.Sub(source[i-period+1].Value)
+		sum = sum.Sub(src[i-period+1].Value)
 	}
 
 	return out
 }
 
-func sma(source Series) Value {
+func sma(src Series) Value {
 	sum := decimal.Zero
-	for _, v := range source {
+	for _, v := range src {
 		sum = sum.Add(v.Value)
 	}
 
 	return Value{
-		Time:  source[len(source)-1].Time,
-		Value: sum.Div(decimal.NewFromInt(int64(len(source)))),
+		Time:  src[len(src)-1].Time,
+		Value: sum.Div(decimal.NewFromInt(int64(len(src)))),
 	}
 }

@@ -5,10 +5,10 @@ import (
 )
 
 // StDev - Standard Deviation.
-func StDev(source Series, period int) Series {
-	out := make(Series, 0, len(source))
+func StDev(src Series, period int) Series {
+	out := make(Series, 0, len(src))
 
-	for i, v := range source {
+	for i, v := range src {
 		if i < period-1 {
 			out = append(out, Value{
 				Time:  v.Time,
@@ -16,7 +16,7 @@ func StDev(source Series, period int) Series {
 			})
 			continue
 		}
-		v := stdev(source[i-period+1 : i+1])
+		v := stdev(src[i-period+1 : i+1])
 
 		out = append(out, v)
 	}
@@ -24,19 +24,19 @@ func StDev(source Series, period int) Series {
 	return out
 }
 
-func stdev(source Series) Value {
-	sma := sma(source)
+func stdev(src Series) Value {
+	sma := sma(src)
 
 	sum := decimal.Zero
-	for _, v := range source {
+	for _, v := range src {
 		diff := v.Value.Sub(sma.Value)
 		sum = sum.Add(diff.Pow(two))
 	}
 
-	length := decimal.NewFromInt(int64(len(source)))
+	length := decimal.NewFromInt(int64(len(src)))
 	stdev := sqrt(sum.Div(length))
 	return Value{
-		Time:  source[len(source)-1].Time,
+		Time:  src[len(src)-1].Time,
 		Value: stdev,
 	}
 }
