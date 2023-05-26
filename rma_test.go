@@ -3,9 +3,9 @@ package ta
 import "github.com/shopspring/decimal"
 
 var (
-	testPeriod = 3
+	testPeriod = 0.5
 
-	// smoothing factor = 0.5
+	// smoothing factor / n / period = 0.5
 
 	testRmaSet = []Value{
 		{
