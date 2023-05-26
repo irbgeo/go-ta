@@ -3,21 +3,21 @@ package ta
 import "github.com/shopspring/decimal"
 
 // Highest maximum value for the period number of bars ago.
-func Highest(source Series, period int) Series {
-	result := make(Series, len(source))
+func Highest(src Series, period int) Series {
+	result := make(Series, len(src))
 
-	idx := len(source) - 1
+	idx := len(src) - 1
 	for {
 		elIdx := idx - period
 		if idx < 0 {
 			break
 		}
-		result[idx] = highest(source[elIdx : idx+1])
+		result[idx] = highest(src[elIdx : idx+1])
 		idx--
 	}
 	for idx >= 0 {
 		result[idx] = Value{
-			Time:  source[idx].Time,
+			Time:  src[idx].Time,
 			Value: decimal.Zero.Copy(),
 		}
 		idx--
@@ -26,16 +26,16 @@ func Highest(source Series, period int) Series {
 	return result
 }
 
-func highest(source Series) Value {
-	lValue := source[0].Value
-	for _, v := range source[1:] {
+func highest(src Series) Value {
+	lValue := src[0].Value
+	for _, v := range src[1:] {
 		if lValue.Cmp(v.Value) < 0 {
 			lValue = v.Value
 		}
 	}
 
 	return Value{
-		Time:  source[len(source)-1].Time,
+		Time:  src[len(src)-1].Time,
 		Value: lValue,
 	}
 }
