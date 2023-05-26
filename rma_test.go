@@ -5,6 +5,8 @@ import "github.com/shopspring/decimal"
 var (
 	testPeriod = 3
 
+	// smoothing factor = 0.5
+
 	testRmaSet = []Value{
 		{
 			Time:  1,
