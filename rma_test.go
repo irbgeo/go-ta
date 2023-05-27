@@ -15,43 +15,43 @@ var (
 		},
 		{
 			Time:  2,
-			Value: decimal.NewFromFloat(7.55),
+			Value: decimal.NewFromFloat(7.366666),
 		},
 		{
 			Time:  3,
-			Value: decimal.NewFromFloat(5.166433333333333),
+			Value: decimal.NewFromFloat(5.044211111),
 		},
 		{
 			Time:  4,
-			Value: decimal.NewFromFloat(4.034688888888889),
+			Value: decimal.NewFromFloat(3.9532074),
 		},
 		{
 			Time:  5,
-			Value: decimal.NewFromFloat(1.3472259259259258),
+			Value: decimal.NewFromFloat(1.292904),
 		},
 		{
 			Time:  6,
-			Value: decimal.NewFromFloat(300.89815061728393),
+			Value: decimal.NewFromFloat(300.8619366),
 		},
 		{
 			Time:  7,
-			Value: decimal.NewFromFloat(202.9321004115226),
+			Value: decimal.NewFromFloat(202.90795775),
 		},
 		{
 			Time:  8,
-			Value: decimal.NewFromFloat(136.1914002743484),
+			Value: decimal.NewFromFloat(136.17530516689),
 		},
 		{
 			Time:  9,
-			Value: decimal.NewFromFloat(89.89093351623228),
+			Value: decimal.NewFromFloat(89.88020344),
 		},
 		{
 			Time:  10,
-			Value: decimal.NewFromFloat(61.830622344154854),
+			Value: decimal.NewFromFloat(61.82346896),
 		},
 		{
 			Time:  11,
-			Value: decimal.NewFromFloat(66.92374822943657),
+			Value: decimal.NewFromFloat(66.9189793),
 		},
 	}
 )
