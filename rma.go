@@ -5,25 +5,25 @@ import (
 )
 
 // RMA - Rolling Moving Average
-// rma[0] = src[0]
-// alpha+src[i]+(1-alpha)+rma[i-1]
-// alpha = 1 / period
+// (rma[i-1]*(period-1)+src[i])/period
+// https://download.esignal.com/products/workstation/help/charts/studies/rmi.htm
 func RMA(src Series, period int) Series {
 	rma := make(Series, 0, len(src))
-	rma = append(rma, src[0].Copy())
+	periodDec := decimal.NewFromInt(int64(period))
 
-	alpha := one.Div(decimal.NewFromInt(int64(period)))
+	rma = append(rma,
+		Value{
+			Time:  src[0].Time,
+			Value: src[0].Value.Div(periodDec),
+		},
+	)
 
 	for i, v := range src[1:] {
-
+		rmaValue := (rma[i].Value.Mul(periodDec.Sub(one)).Add(v.Value)).Div(periodDec)
 		rma = append(rma,
 			Value{
-				Time: v.Time,
-				// alpha*src[i]+(1-alpha)*out[i-1]
-				// https://download.esignal.com/products/workstation/help/charts/studies/rmi.htm
-				Value: alpha.Mul(v.Value).Add(
-					one.Sub(alpha).Mul(rma[i].Value),
-				),
+				Time:  v.Time,
+				Value: rmaValue,
 			},
 		)
 	}
