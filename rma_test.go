@@ -1,7 +1,6 @@
 package ta
 
 import (
-	"fmt"
 	"testing"
 
 	"github.com/shopspring/decimal"
@@ -12,55 +11,53 @@ var (
 	expectedRMA = []Value{
 		{
 			Time:  1,
-			Value: decimal.NewFromFloat(2.3333333333333333),
+			Value: decimal.NewFromFloat(0),
 		},
 		{
 			Time:  2,
-			Value: decimal.NewFromFloat(4.2555555555555555),
+			Value: decimal.NewFromFloat(0),
 		},
 		{
 			Time:  3,
-			Value: decimal.NewFromFloat(2.970137037037037),
+			Value: decimal.NewFromFloat(5.1664333333333333),
 		},
 		{
 			Time:  4,
-			Value: decimal.NewFromFloat(2.5704913580246913),
+			Value: decimal.NewFromFloat(4.0346888888888889),
 		},
 		{
 			Time:  5,
-			Value: decimal.NewFromFloat(0.3710942386831275),
+			Value: decimal.NewFromFloat(1.3472259259259259),
 		},
 		{
 			Time:  6,
-			Value: decimal.NewFromFloat(300.247396159122085),
+			Value: decimal.NewFromFloat(300.8981506172839506),
 		},
 		{
 			Time:  7,
-			Value: decimal.NewFromFloat(202.49826410608139),
+			Value: decimal.NewFromFloat(202.9321004115226337),
 		},
 		{
 			Time:  8,
-			Value: decimal.NewFromFloat(135.9021760707209267),
+			Value: decimal.NewFromFloat(136.1914002743484225),
 		},
 		{
 			Time:  9,
-			Value: decimal.NewFromFloat(89.6981173804806178),
+			Value: decimal.NewFromFloat(89.8909335162322817),
 		},
 		{
 			Time:  10,
-			Value: decimal.NewFromFloat(61.7020782536537452),
+			Value: decimal.NewFromFloat(61.8306223441548545),
 		},
 		{
 			Time:  11,
-			Value: decimal.NewFromFloat(66.8380521691024968),
+			Value: decimal.NewFromFloat(66.9237482294365697),
 		},
 	}
 )
 
 func TestRMA(t *testing.T) {
-	actualRMA := RMA(testSrcSet, 1)
-
-	fmt.Println(actualRMA)
+	actualRMA := RMA(testSrcSet, testPeriod)
 
 	require.Equal(t, len(expectedRMA), len(actualRMA), "compare len")
 	for i := 0; i < len(actualRMA); i++ {
