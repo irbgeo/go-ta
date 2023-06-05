@@ -7,7 +7,7 @@ func RSI(src Series, period int) Series {
 	change := Change(src)
 
 	u := change.MaxConst(decimal.Zero)
-	d := change.MulConst(negOne).MaxConst(decimal.Zero)
+	d := change.MultiConst(negOne).MaxConst(decimal.Zero)
 
 	rs := RMA(u, period).Div(RMA(d, period))
 

@@ -35,12 +35,19 @@ func (s Series) Div(a Series) Series {
 
 	out := make([]Value, len(s))
 	for i := range s {
+		if a[i].Value.Cmp(decimal.Zero) == 0 {
+			out[i] = Value{
+				Time:  s[i].Time,
+				Value: decimal.Zero.Copy(),
+			}
+			continue
+		}
 		out[i] = s[i].Div(a[i])
 	}
 	return out
 }
 
-func (s Series) MulConst(c decimal.Decimal) Series {
+func (s Series) MultiConst(c decimal.Decimal) Series {
 	out := make([]Value, len(s))
 	for i, v := range s {
 		out[i] = Value{

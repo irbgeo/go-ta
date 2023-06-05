@@ -6,5 +6,5 @@ func PPO(src Series, longPeriod, shortPeriod int) Series {
 	longEMA := EMA(src, longPeriod)
 	shortEMA := EMA(src, shortPeriod)
 
-	return shortEMA.Sub(longEMA).Div(longEMA).MulConst(thousand)
+	return shortEMA.Sub(longEMA).Div(longEMA).MultiConst(thousand)
 }
