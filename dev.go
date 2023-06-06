@@ -5,6 +5,7 @@ import (
 )
 
 // Dev returns of the difference between the series and its sma.
+// https://www.tradingview.com/pine-script-reference/v5/#fun_ta.dev
 func Dev(src Series, period int) Series {
 	out := make(Series, 0, len(src))
 
