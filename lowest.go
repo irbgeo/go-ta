@@ -8,11 +8,11 @@ func Lowest(src Series, period int) Series {
 
 	idx := len(src) - 1
 	for {
-		elIdx := idx - period
-		if idx < 0 {
+		bIdx := idx - period
+		if bIdx < 0 {
 			break
 		}
-		result[idx] = lowest(src[elIdx : idx+1])
+		result[idx] = lowest(src[bIdx : idx+1])
 		idx--
 	}
 	for idx >= 0 {

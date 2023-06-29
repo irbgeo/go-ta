@@ -10,9 +10,7 @@ import (
 )
 
 var (
-	testPeriodATR = 3
-
-	testHighSetATR = []ta.Value{
+	testHighSetBearTrend = []ta.Value{
 		{
 			Time:  1,
 			Value: decimal.NewFromFloat(7.5),
@@ -59,7 +57,7 @@ var (
 		},
 	}
 
-	testLowSetATR = []ta.Value{
+	testLowSetBearTrend = []ta.Value{
 		{
 			Time:  1,
 			Value: decimal.NewFromFloat(4),
@@ -106,7 +104,7 @@ var (
 		},
 	}
 
-	testCloseSetATR = []ta.Value{
+	testCloseSetBearTrend = []ta.Value{
 		{
 			Time:  1,
 			Value: decimal.NewFromFloat(6.3),
@@ -154,7 +152,7 @@ var (
 	}
 )
 
-var expectedATR = []ta.Value{
+var expectedBearTrend = []ta.Value{
 	{
 		Time:  1,
 		Value: decimal.NewFromFloat(0),
@@ -201,12 +199,12 @@ var expectedATR = []ta.Value{
 	},
 }
 
-func TestATR(t *testing.T) {
-	actualATR := ta.ATR(testHighSetATR, testCloseSetATR, testLowSetATR, testPeriodATR)
+func TestBearTrend(t *testing.T) {
+	actualBearTrend := ta.BearTrend(testHighSetBearTrend, testCloseSetBearTrend, testLowSetBearTrend)
 
-	require.Equal(t, len(expectedATR), len(actualATR), "compare len")
-	for i := 0; i < len(actualATR); i++ {
-		require.Equalf(t, expectedATR[i].Time, actualATR[i].Time, "compare time: %d", i)
-		require.Equalf(t, expectedATR[i].Value.Round(4).String(), actualATR[i].Value.Round(4).String(), "compare : %d", actualATR[i].Time)
+	require.Equal(t, len(expectedBearTrend), len(actualBearTrend), "compare len")
+	for i := 0; i < len(actualBearTrend); i++ {
+		require.Equalf(t, expectedBearTrend[i].Time, actualBearTrend[i].Time, "compare time: %d", i)
+		require.Equalf(t, expectedBearTrend[i].Value.Round(4).String(), actualBearTrend[i].Value.Round(4).String(), "compare : %d", actualBearTrend[i].Time)
 	}
 }

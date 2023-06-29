@@ -9,9 +9,9 @@ import (
 )
 
 var (
-	testPeriodRMA = 3
+	testPeriodRSI = 3
 
-	testSrcSetRMA = []ta.Value{
+	testSrcSetRSI = []ta.Value{
 		{
 			Time:  1,
 			Value: decimal.NewFromFloat(7),
@@ -59,7 +59,7 @@ var (
 	}
 )
 
-var expectedRMA = []ta.Value{
+var expectedRSI = []ta.Value{
 	{
 		Time:  1,
 		Value: decimal.NewFromFloat(0),
@@ -106,12 +106,12 @@ var expectedRMA = []ta.Value{
 	},
 }
 
-func TestRMA(t *testing.T) {
-	actualRMA := ta.RMA(testSrcSetRMA, testPeriodRMA)
+func TestRSI(t *testing.T) {
+	actualRSI := ta.RSI(testSrcSetRSI, testPeriodRSI)
 
-	require.Equal(t, len(expectedRMA), len(actualRMA), "compare len")
-	for i := 0; i < len(actualRMA); i++ {
-		require.Equalf(t, expectedRMA[i].Time, actualRMA[i].Time, "compare time: %d", i+1)
-		require.Equalf(t, expectedRMA[i].Value.Round(4).String(), actualRMA[i].Value.Round(4).String(), "compare : %d", i+1)
+	require.Equal(t, len(expectedRSI), len(actualRSI), "compare len")
+	for i := 0; i < len(actualRSI); i++ {
+		require.Equalf(t, expectedRSI[i].Time, actualRSI[i].Time, "compare time: %d", i+1)
+		require.Equalf(t, expectedRSI[i].Value.Round(4).String(), actualRSI[i].Value.Round(4).String(), "compare : %d", i+1)
 	}
 }

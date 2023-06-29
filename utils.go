@@ -26,3 +26,14 @@ func max(arr ...Value) Value {
 
 	return max
 }
+
+func calculateHLC3(high, low, close Series) Series {
+	hlc3 := make(Series, 0, high.Len())
+	for i := 0; i < len(high); i++ {
+		el := high[i].Add(low[i]).Add(close[i]).DivConst(three)
+
+		hlc3 = append(hlc3, el)
+	}
+
+	return hlc3
+}
