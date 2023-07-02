@@ -9,9 +9,10 @@ import (
 )
 
 var (
-	testPeriodRMA = 3
+	testLongPeriodPPO  = 5
+	testShortPeriodPPO = 3
 
-	testSrcSetRMA = []ta.Value{
+	testSrcSetPPO = []ta.Value{
 		{
 			Time:  1,
 			Value: decimal.NewFromFloat(7),
@@ -59,7 +60,7 @@ var (
 	}
 )
 
-var expectedRMA = []ta.Value{
+var expectedPPO = []ta.Value{
 	{
 		Time:  1,
 		Value: decimal.NewFromFloat(0),
@@ -106,12 +107,12 @@ var expectedRMA = []ta.Value{
 	},
 }
 
-func TestRMA(t *testing.T) {
-	actualRMA := ta.RMA(testSrcSetRMA, testPeriodRMA)
+func TestPPO(t *testing.T) {
+	actualPPO := ta.PPO(testSrcSetPPO, testLongPeriodPPO, testShortPeriodPPO)
 
-	require.Equal(t, len(expectedRMA), len(actualRMA), "compare len")
-	for i := 0; i < len(actualRMA); i++ {
-		require.Equalf(t, expectedRMA[i].Time, actualRMA[i].Time, "compare time: %d", i+1)
-		require.Equalf(t, expectedRMA[i].Value.Round(4).String(), actualRMA[i].Value.Round(4).String(), "compare : %d", i+1)
+	require.Equal(t, len(expectedPPO), len(actualPPO), "compare len")
+	for i := 0; i < len(actualPPO); i++ {
+		require.Equalf(t, expectedPPO[i].Time, actualPPO[i].Time, "compare time: %d", i+1)
+		require.Equalf(t, expectedPPO[i].Value.Round(4).String(), actualPPO[i].Value.Round(4).String(), "compare : %d", i+1)
 	}
 }

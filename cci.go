@@ -14,12 +14,7 @@ func CCI(high, low, close Series, period int) Series {
 		panic("length mismatch")
 	}
 
-	hlc3 := make(Series, 0, high.Len())
-	for i := 0; i < len(high); i++ {
-		el := high[i].Add(low[i]).Add(close[i]).DivConst(three)
-
-		hlc3 = append(hlc3, el)
-	}
+	hlc3 := calculateHLC3(high, low, close)
 
 	sma := SMA(hlc3, period)
 	dev := Dev(hlc3, period)

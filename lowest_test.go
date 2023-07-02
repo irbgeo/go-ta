@@ -9,9 +9,9 @@ import (
 )
 
 var (
-	testPeriodRMA = 3
+	testPeriodLowest = 3
 
-	testSrcSetRMA = []ta.Value{
+	testSrcSetLowest = []ta.Value{
 		{
 			Time:  1,
 			Value: decimal.NewFromFloat(7),
@@ -59,7 +59,7 @@ var (
 	}
 )
 
-var expectedRMA = []ta.Value{
+var expectedLowest = []ta.Value{
 	{
 		Time:  1,
 		Value: decimal.NewFromFloat(0),
@@ -106,12 +106,12 @@ var expectedRMA = []ta.Value{
 	},
 }
 
-func TestRMA(t *testing.T) {
-	actualRMA := ta.RMA(testSrcSetRMA, testPeriodRMA)
+func TestLowest(t *testing.T) {
+	actualLowest := ta.Lowest(testSrcSetLowest, testPeriodLowest)
 
-	require.Equal(t, len(expectedRMA), len(actualRMA), "compare len")
-	for i := 0; i < len(actualRMA); i++ {
-		require.Equalf(t, expectedRMA[i].Time, actualRMA[i].Time, "compare time: %d", i+1)
-		require.Equalf(t, expectedRMA[i].Value.Round(4).String(), actualRMA[i].Value.Round(4).String(), "compare : %d", i+1)
+	require.Equal(t, len(expectedLowest), len(actualLowest), "compare len")
+	for i := 0; i < len(actualLowest); i++ {
+		require.Equalf(t, expectedLowest[i].Time, actualLowest[i].Time, "compare time: %d", i+1)
+		require.Equalf(t, expectedLowest[i].Value.Round(4).String(), actualLowest[i].Value.Round(4).String(), "compare : %d", i+1)
 	}
 }
