@@ -9,52 +9,52 @@ import (
 )
 
 var (
-	testPeriodDev = 3
+	testPeriodDEV = 2
 
-	testSrcSetDev = []ta.Value{
+	testSrcSetDEV = []ta.Value{
 		{
 			Time:  1,
-			Value: decimal.NewFromFloat(7),
+			Value: decimal.NewFromFloat(7.5),
 		},
 		{
 			Time:  2,
-			Value: decimal.NewFromFloat(8.1),
+			Value: decimal.NewFromFloat(8.4),
 		},
 		{
 			Time:  3,
-			Value: decimal.NewFromFloat(0.3993),
+			Value: decimal.NewFromFloat(0.9943),
 		},
 		{
 			Time:  4,
-			Value: decimal.NewFromFloat(1.7712),
+			Value: decimal.NewFromFloat(2.7712),
 		},
 		{
 			Time:  5,
-			Value: decimal.NewFromFloat(-4.0277),
+			Value: decimal.NewFromFloat(-1.0277),
 		},
 		{
 			Time:  6,
-			Value: decimal.NewFromFloat(900),
+			Value: decimal.NewFromFloat(950),
 		},
 		{
 			Time:  7,
-			Value: decimal.NewFromFloat(7),
+			Value: decimal.NewFromFloat(72.5),
 		},
 		{
 			Time:  8,
-			Value: decimal.NewFromFloat(2.71),
+			Value: decimal.NewFromFloat(2.91),
 		},
 		{
 			Time:  9,
-			Value: decimal.NewFromFloat(-2.71),
+			Value: decimal.NewFromFloat(-2.721),
 		},
 		{
 			Time:  10,
-			Value: decimal.NewFromFloat(5.71),
+			Value: decimal.NewFromFloat(9.71),
 		},
 		{
 			Time:  11,
-			Value: decimal.NewFromFloat(77.11),
+			Value: decimal.NewFromFloat(97.11),
 		},
 	}
 )
