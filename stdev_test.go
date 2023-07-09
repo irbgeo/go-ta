@@ -102,7 +102,7 @@ var expectedStDev = []ta.Value{
 	},
 	{
 		Time:  11,
-		Value: decimal.NewFromFloat(),
+		Value: decimal.NewFromFloat(43.7),
 	},
 }
 

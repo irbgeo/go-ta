@@ -9,9 +9,9 @@ import (
 )
 
 var (
-	testPeriodDEV = 2
+	testPeriodDev = 2
 
-	testSrcSetDEV = []ta.Value{ // Close
+	testSrcSetDev = []ta.Value{ // Close
 		{
 			Time:  1,
 			Value: decimal.NewFromFloat(7.5),

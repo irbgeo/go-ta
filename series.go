@@ -6,7 +6,7 @@ type Series []Value
 
 func (s Series) Add(a Series) Series {
 	if len(s) != len(a) {
-		panic("mismatch series ")
+		panic("mismatch series")
 	}
 
 	out := make([]Value, len(s))
@@ -18,7 +18,7 @@ func (s Series) Add(a Series) Series {
 
 func (s Series) Sub(a Series) Series {
 	if len(s) != len(a) {
-		panic("mismatch series ")
+		panic("mismatch series")
 	}
 
 	out := make([]Value, len(s))
@@ -30,7 +30,7 @@ func (s Series) Sub(a Series) Series {
 
 func (s Series) Div(a Series) Series {
 	if len(s) != len(a) {
-		panic("mismatch series ")
+		panic("mismatch series")
 	}
 
 	out := make([]Value, len(s))
