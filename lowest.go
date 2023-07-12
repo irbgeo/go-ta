@@ -6,21 +6,21 @@ import "github.com/shopspring/decimal"
 func Lowest(src Series, period int) Series {
 	result := make(Series, len(src))
 
-	idx := len(src) - 1
+	eIdx := len(src) - 1
 	for {
-		bIdx := idx - period
+		bIdx := eIdx - period + 1
 		if bIdx < 0 {
 			break
 		}
-		result[idx] = lowest(src[bIdx : idx+1])
-		idx--
+		result[eIdx] = lowest(src[bIdx : eIdx+1])
+		eIdx--
 	}
-	for idx >= 0 {
-		result[idx] = Value{
-			Time:  src[idx].Time,
+	for eIdx >= 0 {
+		result[eIdx] = Value{
+			Time:  src[eIdx].Time,
 			Value: decimal.Zero.Copy(),
 		}
-		idx--
+		eIdx--
 	}
 	return result
 }
@@ -28,7 +28,7 @@ func Lowest(src Series, period int) Series {
 func lowest(src Series) Value {
 	lValue := src[0].Value
 	for _, v := range src[1:] {
-		if lValue.Cmp(v.Value) < 0 {
+		if lValue.Cmp(v.Value) > 0 {
 			lValue = v.Value
 		}
 	}

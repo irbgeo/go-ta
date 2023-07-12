@@ -11,7 +11,7 @@ import (
 var (
 	testPeriodEMA = 3
 
-	testSrcSetEMA = []ta.Value{ // Close
+	testSrcSetEMA = []ta.Value{
 		{
 			Time:  1,
 			Value: decimal.NewFromFloat(7.5),
@@ -62,47 +62,47 @@ var (
 var expectedEMA = []ta.Value{
 	{
 		Time:  1,
-		Value: decimal.NewFromFloat(0),
+		Value: decimal.NewFromFloat(7.5),
 	},
 	{
 		Time:  2,
-		Value: decimal.NewFromFloat(0),
+		Value: decimal.NewFromFloat(7.95),
 	},
 	{
 		Time:  3,
-		Value: decimal.NewFromFloat(5.631433),
+		Value: decimal.NewFromFloat(4.47215),
 	},
 	{
 		Time:  4,
-		Value: decimal.NewFromFloat(4.201317),
+		Value: decimal.NewFromFloat(3.621675),
 	},
 	{
 		Time:  5,
-		Value: decimal.NewFromFloat(1.586808),
+		Value: decimal.NewFromFloat(1.2969875),
 	},
 	{
 		Time:  6,
-		Value: decimal.NewFromFloat(475.793404),
+		Value: decimal.NewFromFloat(475.64849375),
 	},
 	{
 		Time:  7,
-		Value: decimal.NewFromFloat(274.146702),
+		Value: decimal.NewFromFloat(274.074246875),
 	},
 	{
 		Time:  8,
-		Value: decimal.NewFromFloat(138.528351),
+		Value: decimal.NewFromFloat(138.4921234375),
 	},
 	{
 		Time:  9,
-		Value: decimal.NewFromFloat(67.903676),
+		Value: decimal.NewFromFloat(67.88556171875),
 	},
 	{
 		Time:  10,
-		Value: decimal.NewFromFloat(38.806838),
+		Value: decimal.NewFromFloat(38.797780859375),
 	},
 	{
 		Time:  11,
-		Value: decimal.NewFromFloat(67.958419),
+		Value: decimal.NewFromFloat(67.9538904296875),
 	},
 }
 

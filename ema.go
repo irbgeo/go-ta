@@ -1,21 +1,27 @@
 package ta
 
-import "github.com/shopspring/decimal"
+import (
+	"github.com/shopspring/decimal"
+)
 
 // EMA - Exponential Moving Average
+// EMA = alpha * source + (1 - alpha) * EMA[1]
+// alpha = 2 / (length + 1)
+// https://www.tradingview.com/pine-script-reference/v5/#fun_ta.ema
 func EMA(src Series, period int) Series {
 	if len(src) < period {
 		return nil
 	}
 
-	ema := src[0].Value
-	multiplier := decimal.NewFromFloat(2.0 / float64(period+1))
+	alpha := decimal.NewFromFloat(2.0 / float64(period+1))
 	result := make(Series, len(src))
 
-	for i, val := range src[1:] {
-		ema = val.Value.Sub(ema).Mul(multiplier).Add(ema)
+	result[0] = src[0].Copy()
 
-		result[i] = Value{Time: val.Time, Value: ema}
+	for i, val := range src[1:] {
+		ema := alpha.Mul(val.Value).Add(one.Sub(alpha).Mul(result[i].Value))
+
+		result[i+1] = Value{Time: val.Time, Value: ema}
 	}
 
 	return result

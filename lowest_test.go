@@ -70,7 +70,7 @@ var expectedLowest = []ta.Value{
 	},
 	{
 		Time:  3,
-		Value: decimal.NewFromFloat(0),
+		Value: decimal.NewFromFloat(10),
 	},
 	{
 		Time:  4,
@@ -94,7 +94,7 @@ var expectedLowest = []ta.Value{
 	},
 	{
 		Time:  9,
-		Value: decimal.NewFromFloat(5),
+		Value: decimal.NewFromFloat(9),
 	},
 	{
 		Time:  10,

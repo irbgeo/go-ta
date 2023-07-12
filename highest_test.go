@@ -70,7 +70,7 @@ var expectedHighest = []ta.Value{
 	},
 	{
 		Time:  3,
-		Value: decimal.NewFromFloat(0),
+		Value: decimal.NewFromFloat(15),
 	},
 	{
 		Time:  4,
